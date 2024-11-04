@@ -19,6 +19,8 @@ export default function App() {
 
   function DeleteItem(index){
     console.log('deleteItem' + index)
+    const newGoals = goals.filter((el,i) => index!=i)
+    setGoals(newGoals)
   }
 
 
