@@ -1,0 +1,2 @@
+🤖 Open this link on your Android devices (or scan the QR code) to install the app:
+https://expo.dev/accounts/rasith.m/projects/AwesomeProject/builds/598bdaa9-97fa-4759-9dde-2ef41304339e
