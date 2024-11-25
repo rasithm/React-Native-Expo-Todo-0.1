@@ -1,4 +1,4 @@
-import { View,TextInput,Button,StyleSheet } from "react-native"
+import { View,TextInput,Button,StyleSheet , Modal, Image } from "react-native"
 import { useState } from "react"
 
 function Goalinput(props){
@@ -10,12 +10,27 @@ function Goalinput(props){
       }
     function addGoalHandler(){
         props.onAddGoal(goldText)
+        props.onClose()
     }
     return(
-        <View style = {styles.inputContainer}>
+        <Modal visible={props.visible} animationType="slide">
+            <View style = {styles.inputContainer}>
+                <Image  source={require('./assets/img/goal.png')} style ={styles.goalImg} />
                 <TextInput onChangeText={goldInputHandler}  placeholder='Type your goal' style = {styles.input}/>
-                <Button onPress={addGoalHandler} title='Add goal'/>
-        </View>
+                <View style={styles.buttonContainer}>
+                    <View style={styles.button}>
+                        <Button title="Cancel" onPress={props.onClose} color={'#f31282'}/>
+                    </View>
+                    <View style={styles.button}>
+                        <Button onPress={addGoalHandler}  title='Add goal'/>
+                    </View>
+                    
+                    
+                </View>
+                
+            </View>
+        </Modal>
+        
         
 
     )
@@ -24,22 +39,37 @@ const styles = StyleSheet.create({
     input : {
         borderColor : 'black',
         borderWidth : 1 ,
-        width : '70%',
-        marginRight:8,
-        padding:8    
-        
+        width : '100%',
+        padding:8,    
+        borderRadius : 6,
+        backgroundColor:'white'
         
         
         
       },
+
       inputContainer : {
-        flexDirection : 'row',
-        justifyContent : 'space-between',
+        
+        justifyContent : 'center',
         alignItems : 'center',
         borderBottomWidth : 1,
         borderBottomColor : '#cccccc',    
-        flex : 1
+        flex : 1,
+        padding : 16,
+        backgroundColor : '#8cbed6'
         },
+        buttonContainer:{
+            flexDirection :  "row",
+            marginTop : 20,
+        },
+        button: {
+            marginHorizontal : 8,
+            width : 100,
+        },
+        goalImg : {
+            width : 100,
+            height : 100,
+        }
 
 })
 module.exports = Goalinput;
